@@ -1,0 +1,30 @@
+<% include components/head.ejs %>
+<section id="add-bands">
+  <form action="/add-bands" method="post">
+    <div>
+      <%if(error){ %>
+      <%= error _%>
+      <% } %>
+    </div>
+    <fieldset>
+      <legend>Add your favorite bands to your top 20 list!</legend>
+      <label for="name">Search for a metalband:</label>
+      <% if(Array.isArray(data) && data.length > 0){%>
+      <input id="search" data-field="search" type="text" placeholder="Enter a bandname here" autocomplete="off">
+
+      <% for(let i = 0; i < data.length; i++){ %>
+      <label class="band --option" for="<%= data[i].name _%>">
+        <input type="checkbox" id="<%= data[i].name _%>" name="<%= data[i].name _%>" data-name="band">
+        <span><%= data[i].name _%></span>
+      </label>
+      <% } %>
+
+      <% } else{ %>
+      <input id="name" name="name" type="text" disabled placeholder="Enter a bandname here">
+      <% }%>
+
+      <button id="submit-band" type="submit">Update your profile</button>
+    </fieldset>
+  </form>
+</section>
+<% include components/footer.ejs %>

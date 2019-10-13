@@ -1,0 +1,37 @@
+<% include components/head.ejs %>
+<section id="bekende-personen">
+    <!-- Ik heb van alles gebrobeerd, maar ben er nog niet uit hoe ik de h2 uit de flex flow kan halen en tegelijkertijd het
+     horizontale scrollen van de articles te behouden. Vandaar de div. Maar ik blijf zoeken. -->
+     <header>
+       <h2><a href="bekende-personen.html">Bekende Personen ( 15 )</a></h2>
+    </header>
+    <div id="verhalen" class="horizontal-scroll">
+  
+       <% for(let i = 0; i < data.downloaded_stories.length; i++){%>
+        <article title="<%= data.downloaded_stories[i].title %>">
+            <header>
+                <h3><%= data.downloaded_stories[i].title %></h3>
+                <button id="<%= data.downloaded_stories[i].title %>" <% if(offline == false){%>class="download active-done"<%}else{%>class="download disable"<%}%> data-title="<%= data.downloaded_stories.title %>" data-downloaded="true">
+                </button>
+                <figure>
+                  <% for(let x = 0; x < data.downloaded_stories[0].rating; x++){ %>
+                    <span><img src="images/star.svg" alt="ster"></span>
+                  <% }%>
+                </figure>
+             </header>
+             <figure>
+                <img src="images/mywesterncube.jpg" alt="Western Verhaal">
+                <figcaption>
+                   <p><%= data.downloaded_stories[i].content %></p>
+                </figcaption>
+             </figure>
+             <footer>
+                <a href="western.html">Lees Verder</a>
+             </footer>
+          </article>
+        </article>
+        <% } %>
+       </div>
+       </section>
+
+<% include components/footer.ejs %>
