@@ -50,7 +50,7 @@ const loginValidation = require('./routes/login-validation.js')
 const registerValidation = require('./routes/reg-validation.js');
 const matches = require('./routes/matches.js');
 
-const url = process.env.MONGODB_URI;
+const url = process.env.MONGODB_URI; 
 // const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + process.env.DB_NAME;
 
 mongoose.connect(url, {
